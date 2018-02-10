@@ -1,0 +1,70 @@
+body {
+    font-family: sans-serif;
+}
+
+ul {
+    padding-left: 105px;
+}
+
+ul li {
+    padding-left: 20px;
+}
+
+ul p {
+    font-size: 18px;
+    padding-right: 0px;
+}
+
+#name {
+    text-align: center;
+}
+
+address {
+    text-align: center;
+}
+
+span {
+    text-align: right;
+}
+
+#classes {
+    padding-left: 65px;
+    font-size: 16px;
+}
+
+#educationContent {
+    padding-left: 65px;
+    font-size: 16px;
+}
+
+#current {
+    padding-left: 65px;
+    font-size: 16px;
+}
+
+.date {
+    float: right;
+}
+
+.centerthis {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    text-decoration: none;
+    padding: 15px;
+    font-size: 16px;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.buttons a{
+    text-decoration: none;
+}
+
+/*educationIndicator {
+    display: inline-block;
+    width: 20px;
+}*/

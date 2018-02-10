@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebProgrammingResume</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+
+    <link rel="stylesheet" href="resume.css" type="text/css" />
+    <script type="text/javascript" src="resume.js"></script>
+    <style>
+        #name:hover {
+            color: green;
+        }
+        
+        #objective:hover {
+            color: green;
+        }
+        
+        #education:hover {
+            color: green;
+        }
+        
+        #honors:hover {
+            color: green;
+        }
+        
+        #languages:hover {
+            color: green;
+        }
+        
+        #employment:hover {
+            color: green;
+        }
+        
+        #additional:hover {
+            color: green;
+        }
+        
+        #classes:hover {
+            color: red;
+        }
+        
+        #current:hover {
+            color: red;
+        }
+    </style>
+  </head>
+
+<body onload="displayAll()">
+
+    <h1 id="name" style="cursor:pointer" onclick="displayAll()"></h1>
+    <address id="streetAdd"></address><br>
+
+    <h2 class="centerthis">Click my name to change everything to greek and click the titles to minimize the body.</h2>
+    <section>
+        <h4 id="objective" class="sectionHeading" style="cursor:pointer" onclick="collapse(this.id)"></h4>
+
+        <div id="objectiveContent"></div>
+    </section>
+
+    <section>
+        <h4 id="education" class="sectionHeading" style="cursor:pointer" onclick="collapse(this.id)"></h4>
+        <div id="educationContent"></div>
+        <class id="classes"></class>
+        <class id="current"></class>
+    </section>
+
+    <section>
+        <h4 id="honors" class="sectionHeading" style="cursor:pointer" onclick="collapse(this.id)"></h4>
+        <div id="honorsContent"></div>
+    </section>
+
+    <section>
+        <h4 id="languages" class="sectionHeading" style="cursor:pointer" onclick="collapse(this.id)"></h4>
+        <div id="languagesContent"></div>
+    </section>
+
+    <section>
+        <h4 id="employment" class="sectionHeading" style="cursor:pointer" onclick="collapse(this.id)"></h4>
+        <div id="employmentContent">
+        </div>
+    </section>
+
+    <section>
+        <h4 id="additional" class="sectionHeading" style="cursor:pointer" onclick="collapse(this.id)"></h4>
+        <div id="additionalContent"></div>
+    </section>
+    <div class="centerthis">
+        <button type="submit" class="buttons"><a href="https://github.com/Mordon327" target="blank">Visit my GitHub for better projects!</a></button>
+        <button type="submit" class="buttons"><a href="https://soderstromshane-portfolio.herokuapp.com/" target="blank">Click to learn more about what I have learned since this site!</a></button>
+    </div>
+    <script>
+        let resume = {
+
+            "name": "Shane Soderstrom",
+            "address": "Utah 84003",
+            "phone": "555-555-5555",
+            "eMail": "someemail@gmail.com",
+
+            "objName": "Objective",
+            "objective": "Seeking part time job working up to 20 hours per week to further skills in becoming a software developer.",
+
+            "eduName": "Education",
+            "education": [{
+                    "degree": "Bachelor of Science in Computer Science, Computer Science Emphasis",
+                    "school": "Some University",
+                    "location": "Somewhere, Utah",
+                    "date": "Anticipated Graduation Spring 2021"
+                },
+
+                {
+                    "degree": "Associate of Science",
+                    "school": "Some College",
+                    "location": "Somewhere, Utah",
+                    "date": "May 2014"
+                },
+
+                {
+                    "degree": "Associate of Applied Science, Traditional Building Skills Emphasis",
+                    "school": "Some College",
+                    "location": "Somewhere, Utah",
+                    "date": "May 2014"
+                }
+            ],
+
+            "className": "Classes",
+            "classes": [{
+                    "class": "Fundamentals of Programming",
+                    "emphasis": "C#"
+                },
+
+                {
+                    "class": "Object-Oriented Programming",
+                    "emphasis": "C++"
+                },
+
+                {
+                    "class": "Computer Organization and Architecture",
+                    "emphasis": "Low level programming, LC3"
+                },
+
+                {
+                    "class": "Computer Networks",
+                    "emphasis": "Fundamentals of Internet Protocols"
+                }
+            ],
+
+            "currentName": "Current Classes",
+            "currentClasses": [{
+                    "class": "Discrete Mathematics",
+                    "emphasis": "Computer Mathematical Logic"
+                },
+
+                {
+                    "class": "Web Programming One",
+                    "emphasis": "Java Script, HDML, CSS"
+                },
+
+                {
+                    "class": "Intro to Algorithms and Data Structures",
+                    "emphasis": "C++"
+                }
+            ],
+
+            "honorsName": "Honors",
+            "honors": ["Phi Theta Kappa", "GPA 3.79", "Dean's List spring 2016"],
+
+            "languagesName": "Programming Languages",
+            "programmingLanguages": ["C#, C++, LC3"],
+
+            "employmentName": "Employment History",
+            "employment": [{
+                    "job": "Protected Company",
+                    "title": "Laser Technician",
+                    "location": "Somewhere, Utah",
+                    "date": "January 2015 - Current"
+                },
+
+                {
+                    "job": "Protected Company",
+                    "title": "Construction Worker",
+                    "location": "Somewhere, Utah",
+                    "date": "April - December 2014"
+                },
+
+                {
+                    "job": "Protected Company",
+                    "title": "Cabinet Shop Aid",
+                    "location": "Somewhere, Utah",
+                    "date": "August 2013 - May 2014"
+                },
+
+                {
+                    "job": "Protected Company",
+                    "title": "Rifle Range Director",
+                    "location": "Somewhere, Utah",
+                    "date": "June - August 2013"
+                },
+
+                {
+                    "job": "Protected Company",
+                    "title": "Construction Worker",
+                    "location": "Somewhere, Utah",
+                    "date": "May - August 2012"
+                }
+            ],
+
+            "accomplishmentsName": "Additional Accomplishments",
+            "additionalAccomplishments": [
+                "Served a two-year mission for The LDS Church from July 2008 – July 2010 in West Virginia",
+                "Black belt in School A Karate",
+                "Black belt in School B Karate",
+                "Black belt in School C Karate"
+            ]
+        };
+
+        let greekedResume = {
+
+            "name": "Lorem ipsum",
+            "address": "dolor 84003",
+            "phone": "801-857-4399",
+            "eMail": "consectetur@gmail.com",
+
+            "objName": "Placerat",
+            "objective": "Id leo in vitae turpis massa sed 20 Tempus urna et pharetra pharetra massa massa ultricies ut labore et.",
+
+            "eduName": "Tempus",
+            "education": [{
+                    "degree": "Tortor condimentum lacinia quis vel eros, donec ac odio",
+                    "school": "Volutpat Consequat Mauris",
+                    "location": "Nunc, Congue",
+                    "date": "Non consectetur a 2021"
+                },
+
+                {
+                    "degree": "Erat Nam At",
+                    "school": "Lectus Urna",
+                    "location": "In, Nulla",
+                    "date": "Nunc 2014"
+                },
+
+                {
+                    "degree": "Sed ut Perspiciatis Unde, Omnis Iste Natus Error",
+                    "school": "Sit Voluptatem",
+                    "location": "Accusantium, Doloremque",
+                    "date": "Posuere 2014"
+                }
+            ],
+
+            "className": "Sollicitudin",
+            "classes": [{
+                    "class": "Totam Rem Aperiam",
+                    "emphasis": "C#"
+                },
+
+                {
+                    "class": "Tortor posuere ac",
+                    "emphasis": "C++"
+                },
+
+                {
+                    "class": "Ut consequat semper viverra",
+                    "emphasis": "Tortor dignissim convallis , LC3"
+                },
+
+                {
+                    "class": "Aenean et",
+                    "emphasis": "Amet purus gravida quis"
+                }
+            ],
+
+            "currentName": "Blandit turpis",
+            "currentClasses": [{
+                    "class": "Facilisi etiam",
+                    "emphasis": "Cursus in hac"
+                },
+
+                {
+                    "class": "Dignissim diam quis",
+                    "emphasis": "Eget Duis, HDML, CSS"
+                },
+
+                {
+                    "class": "At tellus at urna condimentum mattis",
+                    "emphasis": "C++"
+                }
+            ],
+
+            "honorsName": "pellentesque",
+            "honors": ["Phi Theta Kappa", "GPA 3.79", "Pharetra's convallis posuere 2016"],
+
+            "languagesName": "Morbi leo",
+            "programmingLanguages": ["C#, C++, LC3"],
+
+            "employmentName": "Et Egestas",
+            "employment": [{
+                    "job": "Quis ipsum",
+                    "title": "Suspendisse ultrices",
+                    "location": "Mauris, Vitae",
+                    "date": "Ultricies 2015 - Leo"
+                },
+
+                {
+                    "job": "integer Malesuada",
+                    "title": "Nunc Vel",
+                    "location": "Dui, Id",
+                    "date": "Ornare - Arcu 2014"
+                },
+
+                {
+                    "job": "Odio Ut",
+                    "title": "Tincidunt tortor aliquam",
+                    "location": "Nulla, Facilisi",
+                    "date": "At 2013 - Augue 2014"
+                },
+
+                {
+                    "job": "Eget Arcu dictum Varius",
+                    "title": "Ridiculus Mus Mauris",
+                    "location": "Vitae, Ultricies",
+                    "date": "Leo - Integer 2013"
+                },
+
+                {
+                    "job": "Tristique nulla aliquet Enim Tortor",
+                    "title": "At Volutpat",
+                    "location": "Ut Venenatis Tellus, Metus",
+                    "date": "Magna - Etiam 2012"
+                }
+            ],
+
+            "accomplishmentsName": "Tempor Orci",
+            "additionalAccomplishments": [
+                "Purus faucibus ornare-urna nec tincidunt praesent semper feugiat nibh sed 2008 – Pulvinar  2010 lorem Mollis Aliquam",
+                "Ut porttitor leo A Diam Sollicitudin",
+                "Facilisis sed odio Morbi Quis",
+                "Nisl nunc mi Ipsum Faucibus Vitae"
+            ]
+        };
+
+        function contactName() {
+            let info;
+            if (isGreeked) {
+                info = `${greekedResume.name}`;
+            }
+            else {
+                info = `${resume.name}`;
+            }
+            return info;
+        }
+
+        function displayAddress() {
+            let addressStr = '';
+            if (isGreeked) {
+                addressStr += `${greekedResume.address} * ${greekedResume.phone} * <a href = "mailto:${greekedResume.eMail}">${greekedResume.eMail}</a>`;
+            }
+            else {
+                addressStr += `${resume.address} * ${resume.phone} * <a href = "mailto:${resume.eMail}">${resume.eMail}</a>`;
+            }
+            return addressStr;
+        }
+
+        function displayObjectiveName() {
+            let objectiveStr = '';
+            if (isGreeked) {
+                objectiveStr += `${greekedResume.objName}`;
+            }
+            else {
+                objectiveStr += `${resume.objName}`;
+            }
+            return objectiveStr;
+        }
+
+        function displayObjective() {
+            let objectiveStr = '';
+            if (isGreeked) {
+                objectiveStr += `${greekedResume.objective}`;
+            }
+            else {
+                objectiveStr += `${resume.objective}`;
+            }
+            return objectiveStr;
+        }
+
+        function displayEduName() {
+            let educationStr = '';
+            if (isGreeked) {
+                educationStr += `${greekedResume.eduName}`;
+            }
+            else {
+                educationStr += `${resume.eduName}`;
+            }
+            return educationStr;
+        }
+
+        function displayEduContent() {
+            let educationStr = '';
+            if (isGreeked) {
+                for (let edu of greekedResume.education) {
+                    educationStr += `${edu.degree}, <br>
+                                 ${edu.school}, ${edu.location} - ${edu.date}<br><br>`;
+                }
+            }
+            else {
+                for (let edu of resume.education) {
+                    educationStr += `${edu.degree}, <br>
+                                 ${edu.school}, ${edu.location} - ${edu.date}<br><br>`;
+                }
+            }
+            return educationStr;
+        }
+
+        function displayClassName() {
+            let classesStr = '';
+            if (isGreeked) {
+                classesStr += `<ul><b>${greekedResume.className}</b> ${displayClasses()}</ul>`;
+            }
+            else {
+                classesStr += `<ul><b>${resume.className}</b> ${displayClasses()}</ul>`;
+            }
+            return classesStr;
+        }
+
+        function displayClasses() {
+            let classesStr = '';
+            if (isGreeked) {
+                for (let edu of greekedResume.classes) {
+                    classesStr += `<li>${edu.class} - ${edu.emphasis}</li>`;
+                }
+            }
+            else {
+                for (let edu of resume.classes) {
+                    classesStr += `<li>${edu.class} - ${edu.emphasis}</li>`;
+                }
+            }
+            return classesStr;
+        }
+
+        function displayCurrentName() {
+            let classesStr = '';
+            if (isGreeked) {
+                classesStr += `<ul><b>${greekedResume.currentName}</b> ${displayClasses()}</ul>`;
+            }
+            else {
+                classesStr += `<ul><b>${resume.currentName}</b> ${displayCurrentClasses()}</ul>`;
+            }
+            return classesStr;
+        }
+
+        function displayCurrentClasses() {
+            let classesStr = '';
+            if (isGreeked) {
+                for (let edu of greekedResume.currentClasses) {
+                    classesStr += `<li>${edu.class} - ${edu.emphasis}</li>`;
+                }
+            }
+            else {
+                for (let edu of resume.currentClasses) {
+                    classesStr += `<li>${edu.class} - ${edu.emphasis}</li>`;
+                }
+            }
+            return classesStr;
+        }
+
+        function displayHonorsName() {
+            let honorsStr = '';
+            if (isGreeked) {
+                honorsStr += `${greekedResume.honorsName}`;
+            }
+            else {
+                honorsStr += `${resume.honorsName}`;
+            }
+            return honorsStr;
+        }
+
+        function displayHonors() {
+            let honorsStr = '';
+            if (isGreeked) {
+                for (let edu of greekedResume.honors) {
+                    honorsStr += `${edu}<br>`;
+                }
+            }
+            else {
+                for (let edu of resume.honors) {
+                    honorsStr += `${edu}<br>`;
+                }
+            }
+            return honorsStr;
+        }
+
+        function displayLanguagesName() {
+            let languagesStr = '';
+            if (isGreeked) {
+                languagesStr += `${greekedResume.languagesName}`;
+            }
+            else {
+                languagesStr += `${resume.languagesName}`;
+            }
+            return languagesStr;
+        }
+
+        function displayLanguages() {
+            let languagesStr = '';
+            if (isGreeked) {
+                for (let edu of greekedResume.programmingLanguages) {
+                    languagesStr += `${edu}`;
+                }
+            }
+            else {
+                for (let edu of resume.programmingLanguages) {
+                    languagesStr += `${edu}`;
+                }
+            }
+            return languagesStr;
+        }
+
+        function displayAccomplishmentsName() {
+            let accompsStr = '';
+            if (isGreeked) {
+                accompsStr += `${greekedResume.accomplishmentsName}`;
+            }
+            else {
+                accompsStr += `${resume.accomplishmentsName}`;
+            }
+            return accompsStr;
+        }
+
+        function displayAccomplishments() {
+            let accompsStr = '';
+            if (isGreeked) {
+                for (let edu of greekedResume.additionalAccomplishments) {
+                    accompsStr += `${edu}<br>`;
+                }
+            }
+            else {
+                for (let edu of resume.additionalAccomplishments) {
+                    accompsStr += `${edu}<br>`;
+                }
+            }
+            return accompsStr;
+        }
+
+        function displayEmploymentName() {
+            let employmentStr = '';
+            if (isGreeked) {
+                employmentStr += `${greekedResume.employmentName}`;
+            }
+            else {
+                employmentStr += `${resume.employmentName}`;
+            }
+            return employmentStr;
+        }
+
+        function displayEmployment() {
+            let employmentStr = '';
+            if (isGreeked) {
+                for (let edu of greekedResume.employment) {
+                    employmentStr += `${edu.job}, ${edu.title} - ${edu.location} <span class="date">${edu.date}</span><br>`;
+                }
+            }
+            else {
+                for (let edu of resume.employment) {
+                    employmentStr += `${edu.job}, ${edu.title} - ${edu.location} <span class="date">${edu.date}</span><br>`;
+                }
+            }
+            return employmentStr;
+        }
+
+        var isGreeked = true;
+
+        function displayAll() {
+            isGreeked = !isGreeked;
+            let contact = document.getElementById('name');
+            contact.innerHTML = contactName();
+            let stAdd = document.getElementById('streetAdd');
+            stAdd.innerHTML = displayAddress();
+            let showObjective = document.getElementById('objective');
+            showObjective.innerHTML = displayObjectiveName();
+            let showObjectiveContent = document.getElementById('objectiveContent');
+            showObjectiveContent.innerHTML = displayObjective();
+            let showEduName = document.getElementById('education');
+            showEduName.innerHTML = displayEduName();
+            let showEduContent = document.getElementById('educationContent');
+            showEduContent.innerHTML = displayEduContent();
+            let showClassesName = document.getElementById('classes');
+            showClassesName.innerHTML = displayClassName();
+            let showCurrentName = document.getElementById('current');
+            showCurrentName.innerHTML = displayCurrentName();
+            let showHonorsName = document.getElementById('honors');
+            showHonorsName.innerHTML = displayHonorsName();
+            let showHonors = document.getElementById('honorsContent');
+            showHonors.innerHTML = displayHonors();
+            let showLanguagesName = document.getElementById('languages');
+            showLanguagesName.innerHTML = displayLanguagesName();
+            let showLanguages = document.getElementById('languagesContent');
+            showLanguages.innerHTML = displayLanguages();
+            let showAccompsName = document.getElementById('additional');
+            showAccompsName.innerHTML = displayAccomplishmentsName();
+            let showAccomps = document.getElementById('additionalContent');
+            showAccomps.innerHTML = displayAccomplishments();
+            let showEmploymentName = document.getElementById('employment');
+            showEmploymentName.innerHTML = displayEmploymentName();
+            let showEmployment = document.getElementById('employmentContent');
+            showEmployment.innerHTML = displayEmployment();
+        }
+    </script>
+</body>
+
+</html>
